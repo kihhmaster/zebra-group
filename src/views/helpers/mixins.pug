@@ -1,0 +1,9 @@
+mixin icon(id)
+	svg&attributes(attributes)
+		use(xlink:href="./img/sprites/sprite.svg#" + id)
+
+mixin button(className, href)
+	if href
+		a.button(href=href, class=className)&attributes(attributes)
+	else
+		button.button(class=className)&attributes(attributes)

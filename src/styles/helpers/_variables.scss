@@ -1,0 +1,20 @@
+$mainFont: 'Montserrat Alternates', sans-serif;
+
+
+$font: #000238;
+
+
+$media-list: (
+		'xxs': 375,
+		'xs': 499,
+		'sm': 699,
+		'smd': 1023,
+		'md': 1024,
+		'lg': 1279,
+		'xl': 1300,
+		'xxl': 1900
+);
+
+:root{
+	--vw: 1vw;
+}

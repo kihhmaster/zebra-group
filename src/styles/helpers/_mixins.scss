@@ -1,0 +1,271 @@
+@function _get-media-width($width, $maxmin) {
+  @if map-get($media-list, $width) {
+	$width: map-get($media-list, $width);
+
+	@if $maxmin {
+	  @return $width;
+	} @else {
+	  @return $width + 1;
+	}
+  } @else {
+	@return $width;
+  }
+}
+
+@mixin max($width) {
+  $width: _get-media-width($width, true);
+  @media only screen and (max-width: $width + 'px') {
+	@content;
+  }
+}
+
+@mixin min($width) {
+  $width: _get-media-width($width,false);
+  @media only screen and (min-width: $width + 'px') {
+	@content;
+  }
+}
+
+
+@mixin title{
+	font-family: $titleFont;
+	font-size: vwRoot(212);
+	line-height: 95%;
+	letter-spacing: -0.065em;
+	text-transform: uppercase;
+	@include max(md){
+		font-size: vw2(80);
+	}
+	@include max(sm){
+		font-size: vw3(24);
+		line-height: 1.03;
+		letter-spacing: -0.01em;
+	}
+	span{
+		display: block;
+		@include max(md){
+			display: inline;
+		}
+		&.big{
+			font-size: vwRoot(550);
+			color: $colorCyan;
+			@include max(md){
+				font-size: vw2(150);
+			}
+			@include max(sm){
+				font-size: vw3(74);
+			}
+		}
+	}
+	&.inline{
+		span{
+			display: inline-block;
+			vertical-align: baseline;
+		}
+	}
+}
+
+
+@mixin text{
+	font-family: $titleFont;
+	font-size: vwRoot(42);
+	line-height: 1.28;
+	@include max(md){
+		font-size: vw2(32);
+		line-height: 1.4;
+	}
+	@include max(sm){
+		font-size: vw3(14);
+		line-height: 1.52;
+	}
+}
+
+
+@mixin label{
+	font-weight: 450;
+	font-size: vw(16);
+	line-height: 124%;
+	text-transform: uppercase;
+	@include max(md){
+		font-size: vw2(15);
+		line-height: 1.4;
+	}
+	@include max(sm){
+		font-size: vw3(9);
+		line-height: 1.42;
+	}
+}
+
+
+
+@mixin year{
+	font-size: vwRoot(126);
+	line-height: 1.09;
+	letter-spacing: -0.06em;
+	padding-right: 0.06em;
+	position: absolute;
+	right: vw(45);
+	top: vwRoot(33);
+	font-family: $mainFont;
+
+	@include max(md){
+		font-size: vw2(90);
+		position: relative;
+		left: 0;
+		top: 0;
+		right: auto;
+		padding: vw2(10) 0 vw2(80);
+	}
+
+	@include max(sm){
+		font-size: vw3(38);
+		padding: vw3(11) 0 vw3(71);
+		margin-left: vw3(-4);
+	}
+}
+
+@mixin years-row{
+	display: flex;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	z-index: 9;
+	@include max(md){
+		transform: none;
+	}
+	@include max(sm){
+		position: relative;
+		top: 0;
+		transform: none;
+		padding: vw3(8) vw3(18) 0;
+	}
+}
+@mixin years-number{
+	font-weight: 300;
+	font-size: vw(1064);
+	line-height: 1.71;
+	letter-spacing: -0.07em;
+	padding-right: 0.07em;
+	background: linear-gradient(180.23deg, #FFFFFF 35.85%, rgba(255, 255, 255, 0) 71.53%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+
+	@include max(sm){
+		font-size: vw3(113);
+		line-height: 1.09;
+		letter-spacing: -0.06em;
+		padding-right: 0.06em;
+		background: none;
+		-webkit-background-clip: inherit;
+		background-clip: inherit;
+		-webkit-text-fill-color: unset;
+		color: #ffffff;
+	}
+}
+@mixin years-line{
+	width: vw(553);
+	height: vw(60);
+	background: linear-gradient(90.77deg, #FFFFFF 3.75%, rgba(255, 255, 255, 0) 106.75%);
+	margin-left: vw(125);
+	margin-right: vw(28);
+	@include max(sm){
+		flex-shrink: 0;
+		background: #ffffff;
+		width: vw3(32);
+		height: vw3(8);
+		margin-left: vw3(8);
+		margin-right: vw3(3);
+	}
+}
+
+@mixin overlay{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0;
+	z-index: 11;
+	@include max(sm){
+		display: none;
+	}
+}
+@mixin block{
+	width: max-content;
+	position: absolute;
+	height: 100%;
+	top: 0;
+	left: 100%;
+	background: #FFFFFF;
+	overflow: hidden;
+	@include max(md){
+		left: 0;
+		top: 100%;
+		width: 100%;
+		height: auto;
+		min-height: 100vh;
+	}
+	@include max(sm){
+		position: relative;
+		top: 0;
+		min-height: 0;
+	}
+}
+@mixin blockFlex{
+	height: 100%;
+	display: flex;
+	width: max-content;
+	@include max(md){
+		width: 100%;
+		height: auto;
+		min-height: 100vh;
+		flex-direction: column;
+	}
+	@include max(sm){
+		min-height: 0;
+	}
+}
+
+@mixin allHeightImage{
+	height: 100%;
+	flex-shrink: 0;
+	@include max(md){
+		width: 100%;
+		height: auto;
+	}
+	img{
+		height: 100%;
+		@include max(md){
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+@mixin paddingsImage{
+	padding: vw(50) vw(50) vw(50) 0;
+	height: 100%;
+	flex-shrink: 0;
+	@include max(md){
+		padding: 0;
+	}
+	img{
+		height: 100%;
+		@include max(md){
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+
+@mixin hover {
+	@media (min-width: 1024px) {
+		&:hover,
+		&:focus {
+			@content;
+		}
+	}
+}

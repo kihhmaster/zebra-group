@@ -1,0 +1,61 @@
+extends layouts/default
+include helpers/mixins
+
+block variables
+	- const title = "Project title"
+	- var sidebarActive = 1940
+//- block head
+//- 	include ../blocks/modules/overlay/overlayStyle
+block content
+	.home-page
+		.energy
+			.energy__wave 	
+				img(src="img/wave.png", alt="picture") 
+			.energy__desc
+				.energy__title.title__animation.js-title__parsing#title__animation--1
+					!="Развитие ветроэнергетики в России"
+				.energy__btn.btn#energy__btn.disabled
+					button.btn__animation(type="submit")
+						.btn__hover
+							.btn__icon--hover 
+								<svg width="34" height="27" viewBox="0 0 34 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M20.8349 0.395606L33.5845 12.5449C33.7162 12.6703 33.8207 12.8192 33.892 12.9831C33.9633 13.1469 34 13.3226 34 13.5C34 13.6774 33.9633 13.8531 33.892 14.0169C33.8207 14.1808 33.7162 14.3297 33.5845 14.4551L20.8349 26.6044C20.5691 26.8577 20.2086 27 19.8327 27C19.4568 27 19.0962 26.8577 18.8304 26.6044C18.5646 26.3511 18.4153 26.0075 18.4153 25.6493C18.4153 25.2911 18.5646 24.9476 18.8304 24.6943L29.1629 14.8499L1.41662 14.8499C1.04091 14.8499 0.680586 14.7077 0.414918 14.4545C0.14925 14.2014 -5.74454e-07 13.858 -5.90104e-07 13.5C-6.05753e-07 13.142 0.14925 12.7986 0.414918 12.5455C0.680586 12.2923 1.04091 12.1501 1.41662 12.1501L29.1629 12.1501L18.8304 2.30575C18.5646 2.05245 18.4153 1.7089 18.4153 1.35068C18.4153 0.992458 18.5646 0.648906 18.8304 0.395606C19.0962 0.142305 19.4568 1.05687e-06 19.8327 1.04043e-06C20.2086 1.024e-06 20.5691 0.142304 20.8349 0.395606Z" fill="white" />
+								</svg>
+							.btn__icon--disabled 
+								<svg width="23" height="50" viewBox="0 0 23 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+								<path d="M9.83421 29.4705H2L7.48395 2H17.6684L12.9679 20.3137H20.8021L8.26737 47.7842L9.83421 29.4705Z" stroke="white" stroke-width="3" stroke-linejoin="round" class="svg-elem-1"></path>
+								</svg>
+						.btn__text
+							span Запустить
+						//- .btn__border
+						//- 	<svg width="100%" height="100%" viewBox="0 0 260 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+						//- 	<rect x="2" y="2" width="100%" height="100%" rx="47" stroke="white" stroke-width="4" stroke-linecap="round" class="svg-elem-1"></rect>
+						//- 	</svg>
+			.energy__quantity
+				.energy__quantity__value.energy__quantity__timer 1162
+				.energy__quantity__text.title__animation.js-title__parsing#title__animation--2 ветряка на 2021 год
+			.energy__cloud.energy__cloud__1
+				img(src="img/cloud.png", alt="cloud")
+			.energy__cloud.energy__cloud__2
+				img(src="img/cloud.png", alt="cloud")
+			.energy__cloud.energy__cloud__3
+				img(src="img/cloud.png", alt="cloud")
+			.energy__cloud.energy__cloud__4
+				img(src="img/cloud.png", alt="cloud")
+			.energy__windmill__wrap
+				.energy__windmill
+					.energy__windmill__part.energy__windmill__part__1 
+						img(src="img/windmill__1.png", alt="picture")
+					.energy__windmill__part.energy__windmill__part__2.js-energy__windmill
+						img(src="img/windmill__2.png", alt="picture")
+					.energy__windmill__part.energy__windmill__part__3
+						img(src="img/windmill__3.png", alt="picture")
+
+	//- include ../blocks/modules/header/header
+	//- include ../blocks/modules/footer/footer
+
+
+block scripts
+	script
+		| var nextPage = 'page2.html';
+		| var nextPageBg = '#003F78';
